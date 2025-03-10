@@ -16,6 +16,43 @@ namespace POS
         {
             InitializeComponent();
             LoadCatagoryCheckBoxes();
+            LoadGridProductListActionButtons();
+
+        }
+
+        private void LoadGridProductListActionButtons()
+        {
+            // Create action buttons view, edit and delete
+            DataGridViewButtonColumn viewButton = new DataGridViewButtonColumn
+            {
+                Name = "View",
+                Text = "View",
+                UseColumnTextForButtonValue = false,
+                HeaderText = "View",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
+
+            DataGridViewButtonColumn editButton = new DataGridViewButtonColumn
+            {
+                Name = "Edit",
+                Text = "Edit",
+                UseColumnTextForButtonValue = false,
+                HeaderText = "Edit",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
+
+            DataGridViewButtonColumn deleteButton = new DataGridViewButtonColumn
+            {
+                Name = "Delete",
+                Text = "Delete",
+                UseColumnTextForButtonValue = false,
+                HeaderText = "Delete",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
+
+            dataGridViewProductList.Columns.Add(viewButton);
+            dataGridViewProductList.Columns.Add(editButton);
+            dataGridViewProductList.Columns.Add(deleteButton);
         }
 
         private void LoadCatagoryCheckBoxes()
@@ -50,11 +87,11 @@ namespace POS
                 };
 
                 groupBox.Controls.Add(checkBox);
-                yPosition += 20;    
+                yPosition += 20;
 
             }
 
-           
+
             // Add the groupBox to the panel
             this.panelCatagory.Controls.Add(groupBox);
         }
@@ -72,9 +109,9 @@ namespace POS
         }
 
 
-      private void radioButtonActiveInactive_Click(object sender, EventArgs e)
+        private void radioButtonActiveInactive_Click(object sender, EventArgs e)
         {
-            if (radioButtonActiveInactive.Checked)
+            if (radioButtonActiveInactive.Text == "Active")
             {
                 radioButtonActiveInactive.Checked = false;
                 radioButtonActiveInactive.Text = "Inactive";
@@ -86,6 +123,25 @@ namespace POS
             }
         }
 
-    
+        private void textBoxSearchProduct_KeyUp(object sender, KeyEventArgs e)
+        {
+            string searchText = textBoxSearchProduct.Text.ToLower();
+
+            foreach (DataGridViewRow row in dataGridViewProductList.Rows)
+            {
+                if (searchText.Length != 0)
+                {
+                    if (row.Cells["ProductName"].Value.ToString().ToLower().Contains(searchText))
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
+                }
+               
+            }
+        }
     }
 }

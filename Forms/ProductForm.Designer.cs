@@ -55,6 +55,9 @@ namespace POS
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelManageProducts = new System.Windows.Forms.Label();
+            this.textBoxSearchProduct = new System.Windows.Forms.TextBox();
+            this.buttonSyncProduct = new System.Windows.Forms.Button();
             this.panelProductAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).BeginInit();
             this.panelProductList.SuspendLayout();
@@ -224,6 +227,9 @@ namespace POS
             // panelProductList
             // 
             this.panelProductList.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelProductList.Controls.Add(this.buttonSyncProduct);
+            this.panelProductList.Controls.Add(this.textBoxSearchProduct);
+            this.panelProductList.Controls.Add(this.labelManageProducts);
             this.panelProductList.Controls.Add(this.dataGridViewProductList);
             this.panelProductList.Location = new System.Drawing.Point(326, 12);
             this.panelProductList.Name = "panelProductList";
@@ -281,6 +287,39 @@ namespace POS
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
             // 
+            // labelManageProducts
+            // 
+            this.labelManageProducts.AutoSize = true;
+            this.labelManageProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelManageProducts.Location = new System.Drawing.Point(33, 40);
+            this.labelManageProducts.Name = "labelManageProducts";
+            this.labelManageProducts.Size = new System.Drawing.Size(134, 17);
+            this.labelManageProducts.TabIndex = 1;
+            this.labelManageProducts.Text = "Manage Products";
+            // 
+            // textBoxSearchProduct
+            // 
+            this.textBoxSearchProduct.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBoxSearchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSearchProduct.ForeColor = System.Drawing.Color.DimGray;
+            this.textBoxSearchProduct.Location = new System.Drawing.Point(516, 43);
+            this.textBoxSearchProduct.Name = "textBoxSearchProduct";
+            this.textBoxSearchProduct.Size = new System.Drawing.Size(253, 20);
+            this.textBoxSearchProduct.TabIndex = 2;
+            this.textBoxSearchProduct.Text = "Search...";
+            this.textBoxSearchProduct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchProduct_KeyUp);
+            // 
+            // buttonSyncProduct
+            // 
+            this.buttonSyncProduct.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonSyncProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSyncProduct.Location = new System.Drawing.Point(775, 41);
+            this.buttonSyncProduct.Name = "buttonSyncProduct";
+            this.buttonSyncProduct.Size = new System.Drawing.Size(98, 23);
+            this.buttonSyncProduct.TabIndex = 3;
+            this.buttonSyncProduct.Text = "Sync Product";
+            this.buttonSyncProduct.UseVisualStyleBackColor = false;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +335,7 @@ namespace POS
             this.panelProductAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductImage)).EndInit();
             this.panelProductList.ResumeLayout(false);
+            this.panelProductList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductList)).EndInit();
             this.ResumeLayout(false);
 
@@ -322,14 +362,17 @@ namespace POS
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelProductList;
         private System.Windows.Forms.DataGridView dataGridViewProductList;
+        private System.Windows.Forms.DataGridViewButtonColumn Actions;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Image;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewButtonColumn Actions;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Image;
+        private System.Windows.Forms.TextBox textBoxSearchProduct;
+        private System.Windows.Forms.Label labelManageProducts;
+        private System.Windows.Forms.Button buttonSyncProduct;
     }
 }
 
